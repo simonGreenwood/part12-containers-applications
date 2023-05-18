@@ -3,22 +3,20 @@ const router = express.Router()
 const redis = require("../redis")
 const configs = require("../util/config")
 
-let visits = 0
-
 /* GET index data. */
 router.get("/", async (req, res) => {
-  visits++
-
+  const visits = (await redis.getAsync("visits")) || 0
+  redis.setAsync("visits", parseInt(visits) + 1)
   res.send({
     ...configs,
-    visits,
+    visits: parseInt(visits),
   })
 })
 
 router.get("/statistics", async (req, res) => {
-  const visits = (await redis.getAsync("visits")) || 1
+  const todos = (await redis.getAsync("todos")) || 1
   res.send({
-    added_todos: Number(visits),
+    added_todos: parseInt(todos),
   })
 })
 module.exports = router
