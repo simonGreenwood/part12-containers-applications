@@ -21,5 +21,10 @@ services:
     volumes:
       - ./redis_data:/data
 
+  server:
+    environment:
+      - REDIS_PASSWORD=redisurl_here
+      - MONGO_URL=mongourl_here
+
 volumes:
   mongo_data:
