@@ -11,4 +11,3 @@ FROM test as build
 RUN npm run build
 
 FROM nginx:1.21.1-alpine
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
