@@ -1,6 +1,6 @@
 const express = require("express")
 const { Todo } = require("../mongo")
-const { getAsync, setAsync } = require("../redis")
+const redis = require("../redis")
 const router = express.Router()
 
 /* GET todos listing. */
