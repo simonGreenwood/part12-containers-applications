@@ -11,8 +11,8 @@ services:
     ports:
       - 3001:3000
     environment:
-      - REDIS_URL=redis://localhost:6379
-      - MONGO_URL=mongodb://root:example@localhost:3456/the_database
+      - REDIS_URL=redis://redis:6379
+      - MONGO_URL=mongodb://root:example@mongo:27017/the_database
 
   mongo:
     image: mongo
