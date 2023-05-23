@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <TodoView />
-      {console.log(process.env.REACT_APP_BACKEND_URL)}
+      {console.log(process.env)}
     </div>
   )
 }
