@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend-dev
+
+  frontend-dev:
+    image: todo-frontend-dev
+    build:
+      context: ./todo-frontend
+      dockerfile: ./dev.Dockerfile
+    volumes:
+      - ./todo-frontend:/usr/src/app
+    ports:
+      - 3000:3000
