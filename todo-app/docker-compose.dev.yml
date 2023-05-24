@@ -8,9 +8,9 @@ services:
     volumes:
       - ./nginx.dev.conf:/etc/nginx/nginx.conf
     depends_on:
-      - frontend-dev
+      - app
 
-  frontend-dev:
+  app:
     image: todo-frontend-dev
     build:
       context: ./todo-frontend
