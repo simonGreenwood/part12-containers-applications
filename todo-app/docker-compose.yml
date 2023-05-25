@@ -12,20 +12,24 @@ services:
       - backend
 
   frontend:
-    image: todo-frontend
+    image: todo-frontend-dev
     build:
       context: ./todo-frontend
-      dockerfile: ./dev.Dockerfile
+      dockerfile: ./Dockerfile
     volumes:
       - ./todo-frontend:/usr/src/app
+    ports:
+      - 3000:3000
 
   backend:
-    image: todo-backend
+    image: todo-backend-dev
     build:
       context: ./todo-backend
       dockerfile: ./Dockerfile
     volumes:
       - ./todo-backend:/usr/src/app
+    ports:
+      - 3001:3001
     environment:
       - REDIS_URL=redis://redis:6379
       - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
